@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CakeShopModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="CakeShopModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="CakeShopModel.User" />
+    <EntitySet Name="Cakes" EntityType="CakeShopModel.Cake" />
+    <AssociationSet Name="CakeUser" Association="CakeShopModel.CakeUser">
+      <End Role="Cake" EntitySet="Cakes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MiddleName" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ContactNum" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cakes" Relationship="CakeShopModel.CakeUser" FromRole="User" ToRole="Cake" />
+  </EntityType>
+  <EntityType Name="Cake">
+    <Key>
+      <PropertyRef Name="CakeId" />
+    </Key>
+    <Property Name="CakeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CakeType" Type="String" Nullable="false" />
+    <Property Name="CakeName" Type="String" Nullable="false" />
+    <Property Name="CakeFlavor" Type="String" Nullable="false" />
+    <Property Name="CakeLayer" Type="String" Nullable="false" />
+    <Property Name="CakePrice" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="CakeShopModel.CakeUser" FromRole="Cake" ToRole="User" />
+    <Property Name="UserUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="CakeUser">
+    <End Type="CakeShopModel.Cake" Role="Cake" Multiplicity="*" />
+    <End Type="CakeShopModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Cake">
+        <PropertyRef Name="UserUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

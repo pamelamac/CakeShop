@@ -1,0 +1,92 @@
+﻿@model SuperFinal.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div>
+        <h2>Employee Information</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserPassword)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserPassword)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MiddleName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContactNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
+
+        </dl>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>
